@@ -1,5 +1,5 @@
 package gomicroservice
 
 func Version() string {
-	return "0.1"
+	return "0.2"
 }
