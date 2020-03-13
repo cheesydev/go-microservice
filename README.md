@@ -1,5 +1,7 @@
 # go-microservice
 
+![Test](https://github.com/cheesydev/go-microservice/workflows/Test/badge.svg?branch=master)
+
 Simple Go HTTP server.
 
 Run it locally.
