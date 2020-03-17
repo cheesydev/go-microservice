@@ -19,5 +19,10 @@ func main() {
 }
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/" {
+		w.WriteHeader(404)
+		w.Write([]byte("oops not found"))
+		return
+	}
 	fmt.Fprintf(w, "go-microservice v%s\n", gomicroservice.Version())
 }
