@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: go-microservice
-        image: go-microservice:0.4
+        image: rafaelportela/go-microservice:0.5
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
