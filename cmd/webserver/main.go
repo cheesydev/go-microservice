@@ -17,14 +17,16 @@ func main() {
 
 	http.HandleFunc("/", helloHandler)
 
-	// example from https://github.com/prometheus/client_golang/blob/master/prometheus/promauto/auto.go
-	http.HandleFunc("/pi", promhttp.InstrumentHandlerCounter(
-		promauto.NewCounterVec(
-			prometheus.CounterOpts{
-				Name: "pi_requests_total",
-				Help: "Total number of pi http requests",
+	// instrument (wrap) handler with a duration observer
+	http.HandleFunc("/pi", promhttp.InstrumentHandlerDuration(
+		promauto.NewSummaryVec(
+			prometheus.SummaryOpts{
+				Name:       "pi_requests_durations_seconds",
+				Help:       "Duration distributions of pi http requests",
+				Objectives: map[float64]float64{0.5: 0.05, 0.9: 0.01, 0.99: 0.001},
 			},
-			// partition the counter by http status code (a supported label)
+			// partition the counter by http status code
+			// (code and method are the supported partition labels)
 			[]string{"code"},
 		),
 		http.HandlerFunc(piHandler),
