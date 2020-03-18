@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	gomicroservice "github.com/cheesydev/go-microservice"
+	"github.com/cheesydev/go-microservice/pi"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
@@ -31,7 +32,7 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 func piHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Leibniz formula
-	pi := (4. / 1) - (4. / 3) + (4. / 5) - (4. / 7) + (4. / 9) - (4. / 11) + (4. / 13) - (4. / 15)
+	pi := pi.LeibnizPi()
 
 	fmt.Fprintf(w, "%v\n", pi)
 }
