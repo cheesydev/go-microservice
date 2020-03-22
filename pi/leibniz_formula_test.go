@@ -5,6 +5,10 @@ import (
 	"testing"
 )
 
+func TestLeibnizCalculater(t *testing.T) {
+	TestLeibnizFormula(t)
+}
+
 func TestLeibnizFormula(t *testing.T) {
 
 	pi := 3.141592
@@ -12,7 +16,9 @@ func TestLeibnizFormula(t *testing.T) {
 	lower := pi - precision
 	higher := pi + precision
 
-	value := LeibnizPi()
+	var p PiCalculator = Leibniz{}
+	value := p.CalculatePi()
+
 	if value < lower || value > higher {
 		t.Errorf("Bad aproximation of pi value. "+
 			"Expecting value between %f and %f, got: %f\n",

@@ -1,8 +1,10 @@
 package pi
 
+type Nilakantha struct{}
+
 // Calculate an aproximation of the pi value with 4 decimal digits of precision
 // using the a formula based on Nilankantha's series.
-func NilakanthaPi() float64 {
+func (n Nilakantha) CalculatePi() float64 {
 
 	// aprox. num. of terms to provide precision of 5 digitis after the dot
 	return NilakanthaPiTerms(60)

@@ -11,7 +11,8 @@ func TestNilakanthaFormula(t *testing.T) {
 	lower := pi - precision
 	higher := pi + precision
 
-	value := NilakanthaPi()
+	var p PiCalculator = Nilakantha{}
+	value := p.CalculatePi()
 
 	if value < lower || value > higher {
 		t.Errorf("Bad aproximation of pi value. "+

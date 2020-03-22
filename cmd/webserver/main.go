@@ -49,8 +49,7 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 
 func piHandler(w http.ResponseWriter, r *http.Request) {
 
-	// Leibniz formula
-	pi := pi.LeibnizPi()
+	var p pi.PiCalculator = pi.Leibniz{}
 
-	fmt.Fprintf(w, "%v\n", pi)
+	fmt.Fprintf(w, "%v\n", p.CalculatePi())
 }

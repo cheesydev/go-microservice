@@ -1,8 +1,10 @@
 package pi
 
+type Leibniz struct{}
+
 // Calculate an aproximation of the pi value with 5 decimal digits of precision
 // using the a formula based on Leibniz series.
-func LeibnizPi() float64 {
+func (l Leibniz) CalculatePi() float64 {
 
 	// aprox. number of terms needed to achieve precision of 5 digits
 	return LeibnizPiTerms(800000)
