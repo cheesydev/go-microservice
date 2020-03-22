@@ -7,7 +7,7 @@ import (
 
 func TestLeibnizFormula(t *testing.T) {
 	pi := LeibnizPi()
-	if pi < 3 && pi > 3.5 {
+	if pi < 3 || pi > 3.5 {
 		t.Errorf("Bad aproximation of pi value: %f\n", pi)
 	}
 }
