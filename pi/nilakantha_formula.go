@@ -4,8 +4,8 @@ package pi
 // using the a formula based on Nilankantha's series.
 func NilakanthaPi() float64 {
 
-	// 30 terms is enough to provide precision of 4 digitis after the dot
-	return NilakanthaPiTerms(30)
+	// aprox. num. of terms to provide precision of 5 digitis after the dot
+	return NilakanthaPiTerms(60)
 }
 
 // Calculate an aproximation of the pi value using the Nilankantha's series

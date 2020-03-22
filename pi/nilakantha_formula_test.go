@@ -5,14 +5,17 @@ import (
 )
 
 func TestNilakanthaFormula(t *testing.T) {
-	lower := 3.1415
-	higher := 3.1416
-	pi := NilakanthaPi()
 
-	// the first 5 decimal digits are: 3.14159
-	if pi < lower || pi > higher {
+	pi := 3.141592
+	precision := 0.000001
+	lower := pi - precision
+	higher := pi + precision
+
+	value := NilakanthaPi()
+
+	if value < lower || value > higher {
 		t.Errorf("Bad aproximation of pi value. "+
-			"Expected value between %f and %f, got: %f\n", lower, higher, pi)
+			"Expected value between %f and %f, got: %f\n", lower, higher, value)
 	}
 }
 

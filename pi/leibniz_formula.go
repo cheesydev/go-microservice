@@ -1,11 +1,14 @@
 package pi
 
+// Calculate an aproximation of the pi value with 5 decimal digits of precision
+// using the a formula based on Leibniz series.
 func LeibnizPi() float64 {
-	// it takes ~0.6s
-	return LeibnizPiTerms(500000000)
+
+	// aprox. number of terms needed to achieve precision of 5 digits
+	return LeibnizPiTerms(800000)
 }
 
-// calculate pi using Leibniz's formula with a given number of terms
+// Calculate pi using Leibniz's formula with a given number of terms.
 func LeibnizPiTerms(terms int) float64 {
 
 	var pi float64
