@@ -1,6 +1,6 @@
 # go-microservice
 
-![Test](https://github.com/cheesydev/go-microservice/workflows/Test/badge.svg?branch=master)
+[![GitHub Actions](https://github.com/cheesydev/go-microservice/workflows/Test/badge.svg?branch=master)](https://github.com/cheesydev/go-microservice/actions?query=branch%3Amaster)
 
 Simple Go HTTP server.
 
