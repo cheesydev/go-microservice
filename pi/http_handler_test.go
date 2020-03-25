@@ -1,6 +1,8 @@
 package pi
 
 import (
+	"encoding/json"
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -22,8 +24,12 @@ func TestCalculatorHandlerReturnsPiValue(t *testing.T) {
 		t.Errorf("hello handler did not return 200: got %d", status)
 	}
 
-	body := recorder.Body.String()
-	if !strings.HasPrefix(body, "3.") {
-		t.Errorf("hello handler didn't return expected Pi value: %s\n", body)
+	var resp piAproximationResponse
+	_ = json.NewDecoder(recorder.Body).Decode(&resp)
+
+	value := fmt.Sprintf("%f", resp.Pi)
+	if !strings.HasPrefix(value, "3.") {
+		// %v prints values only, %#v prints keys and values
+		t.Errorf("hello handler didn't return expected Pi value: %#v\n", resp)
 	}
 }

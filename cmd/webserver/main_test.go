@@ -55,7 +55,7 @@ func TestNotFound(t *testing.T) {
 	}
 }
 
-func TestPiValueIsThreePointSomething(t *testing.T) {
+func TestPiHandlerReturnsOk(t *testing.T) {
 	req, err := http.NewRequest("GET", "/pi", nil)
 	if err != nil {
 		t.Fatal(err)
@@ -68,10 +68,5 @@ func TestPiValueIsThreePointSomething(t *testing.T) {
 	status := recorder.Code
 	if status != http.StatusOK {
 		t.Errorf("hello handler did not return 200: got %d", status)
-	}
-
-	body := recorder.Body.String()
-	if !strings.HasPrefix(body, "3.") {
-		t.Errorf("hello handler didn't return expected Pi value: %s\n", body)
 	}
 }
