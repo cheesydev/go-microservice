@@ -5,6 +5,8 @@ import (
 	"net/http/httptest"
 	"strings"
 	"testing"
+
+	"github.com/cheesydev/go-microservice/pi"
 )
 
 func TestHelloHandler(t *testing.T) {
@@ -60,7 +62,7 @@ func TestPiValueIsThreePointSomething(t *testing.T) {
 	}
 
 	recorder := httptest.NewRecorder()
-	handler := http.HandlerFunc(piHandler)
+	handler := http.HandlerFunc(pi.CalculatorHandler)
 	handler.ServeHTTP(recorder, req)
 
 	status := recorder.Code

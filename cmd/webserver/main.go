@@ -29,7 +29,7 @@ func main() {
 			// (code and method are the supported partition labels)
 			[]string{"code"},
 		),
-		http.HandlerFunc(piHandler),
+		http.HandlerFunc(pi.CalculatorHandler),
 	))
 
 	http.Handle("/metrics", promhttp.Handler())
@@ -45,11 +45,4 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	fmt.Fprintf(w, "go-microservice v%s\n", gomicroservice.Version())
-}
-
-func piHandler(w http.ResponseWriter, r *http.Request) {
-
-	var p pi.PiCalculator = pi.Leibniz{}
-
-	fmt.Fprintf(w, "%v\n", p.CalculatePi())
 }
