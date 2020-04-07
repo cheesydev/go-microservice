@@ -21,7 +21,7 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
       - name: get release version
-        run: echo ::set-env name=RELEASE_VERSION::$(echo $GITHUB_REF:10})
+        run: echo ::set-env name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
       - name: Publish to registry
         uses: elgohr/Publish-Docker-Github-Action@2.14
         with:
