@@ -12,3 +12,16 @@ jobs:
       uses: actions/checkout@v2
     - name: Test
       run: go test ./...
+  build_image:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Publish to registry
+        uses: elgohr/Publish-Docker-Github-Action@2.14
+        with:
+          name: rafaelportela/go-microservices
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          tags: "test"
+          snapshot: true
