@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+service Pi {
+
+  rpc AproximatePi(google.protobuf.Empty) returns (PiAproximation) {}
+}
+
+message PiAproximation {
+  float value = 1;
+}
