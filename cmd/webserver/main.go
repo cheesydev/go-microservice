@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"net/http"
@@ -14,6 +15,10 @@ import (
 )
 
 func main() {
+
+	portPtr := flag.String("port", "8080", "webserver port")
+	flag.Parse()
+
 	v := gomicroservice.Version()
 
 	http.HandleFunc("/", helloHandler)
@@ -39,8 +44,9 @@ func main() {
 
 	http.Handle("/metrics", promhttp.Handler())
 
-	fmt.Printf("Running go-microservice v%s, listening at port 8080\n", v)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	port := fmt.Sprintf(":%s", *portPtr)
+	fmt.Printf("Running go-microservice v%s, listening at port %s\n", v, port)
+	log.Fatal(http.ListenAndServe(port, nil))
 }
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
