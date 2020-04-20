@@ -7,6 +7,7 @@ import (
 
 	gomicroservice "github.com/cheesydev/go-microservice"
 	"github.com/cheesydev/go-microservice/pi"
+	"github.com/cheesydev/go-microservice/product"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promauto"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
@@ -16,6 +17,10 @@ func main() {
 	v := gomicroservice.Version()
 
 	http.HandleFunc("/", helloHandler)
+
+	// Returns a rating number, from 0 to 5.
+	// (experimental, used by another project)
+	http.HandleFunc("/rating", product.RatingHandler)
 
 	// instrument (wrap) handler with a duration observer
 	http.HandleFunc("/pi", promhttp.InstrumentHandlerDuration(
