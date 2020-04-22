@@ -12,9 +12,15 @@ type ratingResponse struct {
 
 func RatingHandler(w http.ResponseWriter, r *http.Request) {
 
+  // TODO: get param from querystring
+  id := "10"
+
+  // TODO: check err
+  rating, _ := ratingByProductId(id)
+
 	resp := ratingResponse{
-		ProductId: "10",
-		Rating:    "4",
+		ProductId: id,
+		Rating:    rating,
 	}
 
 	w.Header().Set("Content-Type", "application/json")
