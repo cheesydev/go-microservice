@@ -25,4 +25,5 @@ go get -u google.golang.org/grpc
 go get -u github.com/golang/protobuf/protoc-gen-go
 
 protoc -I pi/ pi/pi.proto --go_out=plugins=grpc:pi
+protoc -I product/ product/product.proto --go_out=plugins=grpc:product
 ```
