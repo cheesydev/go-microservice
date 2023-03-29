@@ -23,7 +23,7 @@ jobs:
       - name: get release version
         run: echo ::set-env name=RELEASE_VERSION::$(echo ${GITHUB_REF/*tags\/v})
       - name: Publish to registry
-        uses: elgohr/Publish-Docker-Github-Action@2.14
+        uses: elgohr/Publish-Docker-Github-Action@v5
         with:
           name: rafaelportela/go-microservice
           username: ${{ secrets.DOCKER_USERNAME }}
